@@ -1,13 +1,6 @@
-# Sample Hardhat Project
+# CREATE2 and CREATE 
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This repo demonstrates the difference between CREATE and CREATE2 opcodes. 
 
-Try running some of the following tasks:
+You can simply run the test or script to see how CREATE2 allows you to deploy a contract at precomputed address. 
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
