@@ -16,9 +16,10 @@ async function main() {
     address
   );
 
-  const deployed = await create2.Deploy();
+  const tx = await create2.Deploy();
 
-  console.log("Dpeloyed on address", deployed);
+  console.log("expected:",address, "Deployed on:",await create2.ContractDeployedOn());
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
