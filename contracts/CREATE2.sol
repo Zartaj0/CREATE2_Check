@@ -2,16 +2,15 @@
 pragma solidity 0.8.18;
 
 contract ToBeDeployed {
-    string hello = "hiii";
+    string hello = "deployed via Create2";
 }
 
 contract Create2 {
     event Deployed(address contractAddres);
     address public ContractDeployedOn;
 
-    function getAddr() public view returns (address) {
+    function getAddr(uint256 salt) public view returns (address) {
         bytes memory bytecode = type(ToBeDeployed).creationCode;
-        uint256 salt = 10;
 
         return
             address(
@@ -30,9 +29,8 @@ contract Create2 {
             );
     }
 
-    function Deploy() public {
-        uint256 a = 10;
-        ToBeDeployed to = new ToBeDeployed{salt: bytes32(a)}();
+    function DeployViaCreate2(uint256 salt) public {
+        ToBeDeployed to = new ToBeDeployed{salt: bytes32(salt)}();
         emit Deployed(address(to));
         ContractDeployedOn = address(to);
     }
