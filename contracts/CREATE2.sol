@@ -6,6 +6,9 @@ contract ToBeDeployed {
 }
 
 contract Create2 {
+    event Deployed(address contractAddres);
+    address public ContractDeployedOn;
+
     function getAddr() public view returns (address) {
         bytes memory bytecode = type(ToBeDeployed).creationCode;
         uint256 salt = 10;
@@ -27,9 +30,10 @@ contract Create2 {
             );
     }
 
-    function Deploy() public returns (address) {
+    function Deploy() public {
         uint256 a = 10;
         ToBeDeployed to = new ToBeDeployed{salt: bytes32(a)}();
-        return address(to);
+        emit Deployed(address(to));
+        ContractDeployedOn = address(to);
     }
 }
