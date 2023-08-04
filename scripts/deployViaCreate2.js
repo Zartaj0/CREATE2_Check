@@ -16,7 +16,7 @@ async function main() {
     address
   );
 
-  const tx = await create2.Deploy();
+  const tx = await create2.DeployViaCreate2();
 
   console.log("expected:",address, "Deployed on:",await create2.ContractDeployedOn());
 
